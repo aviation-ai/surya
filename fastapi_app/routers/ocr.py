@@ -1,3 +1,4 @@
+import io
 from fastapi import APIRouter, File, UploadFile
 from PIL import Image
 from fastapi_app.services.ocr_service import (
@@ -12,7 +13,7 @@ from fastapi_app.services.ocr_service import (
     get_page_image,
     page_count
 )
-import io
+
 
 router = APIRouter()
 

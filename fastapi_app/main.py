@@ -8,4 +8,4 @@ app.include_router(ocr.router)
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to OCR API"}
+    return {"message": "Welcome to OCR API's"}

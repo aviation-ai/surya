@@ -1,4 +1,5 @@
 # fastapi_app/services/ocr_service.py
+
 import os
 import argparse
 from PIL import Image
