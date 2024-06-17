@@ -1,4 +1,4 @@
-import io
+# fastapi_app/routers/ocr.py
 from fastapi import APIRouter, File, UploadFile
 from PIL import Image
 from fastapi_app.services.ocr_service import (
@@ -13,7 +13,7 @@ from fastapi_app.services.ocr_service import (
     get_page_image,
     page_count
 )
-
+import io
 
 router = APIRouter()
 
@@ -29,7 +29,7 @@ async def text_detection_endpoint(file: UploadFile = File(...)):
     return {"detected_text": pred.model_dump()}
 
 @router.post("/ocr/")
-async def ocr_endpoint(file: UploadFile = File(...), langs: list[str]):
+async def ocr_endpoint(langs: list[str] = ["English"], file: UploadFile = File(...)):
     img = Image.open(io.BytesIO(await file.read())).convert("RGB")
     rec_img, pred = ocr(img, langs, det_model, det_processor, rec_model, rec_processor)
     return {"ocr_result": pred.model_dump()}
